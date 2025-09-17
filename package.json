@@ -1,0 +1,31 @@
+{
+  "name": "playwright-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test_chrome": "npx playwright test --project=chromium",
+    "test_ui": "npx playwright test --ui",
+    "test_headed": "npx playwright test --headed",
+    "test_report": "npx playwright test && npx playwright show-report",
+    "test_failed": "npx playwright test --last-failed",
+    "test_list": "npx playwright test --list"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.3",
+    "@typescript-eslint/eslint-plugin": "^8.44.0",
+    "@typescript-eslint/parser": "^8.44.0",
+    "eslint": "^9.35.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.10.2"
+  }
+}
