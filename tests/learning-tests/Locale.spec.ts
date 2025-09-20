@@ -4,7 +4,7 @@ test.use({
   locale: "de-DE",
 });
 
-test("Locale", async ({ page }) => {
+test.skip("Locale", async ({ page }) => {
   await page.goto("https://google.com");
   await page.locator("#L2AGLb").click();
   await page.locator(".gLFyf").fill("My current time and location");

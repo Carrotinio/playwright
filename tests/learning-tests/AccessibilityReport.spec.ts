@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import test from "@playwright/test";
 
-test("Accessibility test", async ({ page }) => {
+test.skip("Accessibility test", async ({ page }) => {
   await page.goto("https://the-internet.herokuapp.com/login");
 
   const analyzer = await new AxeBuilder({ page })

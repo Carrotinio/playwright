@@ -8,6 +8,6 @@ export class BasePage {
   }
 
   async acceptAllCookies() {
-    await this.consentButton.click();
+    if (await this.consentButton.isVisible()) await this.consentButton.click();
   }
 }
