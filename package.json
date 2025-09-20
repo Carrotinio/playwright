@@ -6,11 +6,13 @@
   "scripts": {
     "test": "npx playwright test",
     "test_chrome": "npx playwright test --project=chromium",
+    "test_mobile": "npx playwright test --project='Mobile Safari'",
     "test_ui": "npx playwright test --ui",
     "test_headed": "npx playwright test --headed",
     "test_report": "npx playwright test && npx playwright show-report",
     "test_failed": "npx playwright test --last-failed",
     "test_list": "npx playwright test --list",
+    "generate_allure": "allure generate --clean ./allure-results -o ./allure-report",
     "open_allure": "allure generate --clean ./allure-results -o ./allure-report & allure open ./allure-report"
   },
   "keywords": [],
