@@ -10,7 +10,8 @@
     "test_headed": "npx playwright test --headed",
     "test_report": "npx playwright test && npx playwright show-report",
     "test_failed": "npx playwright test --last-failed",
-    "test_list": "npx playwright test --list"
+    "test_list": "npx playwright test --list",
+    "open_allure": "allure generate --clean ./allure-results -o ./allure-report & allure open ./allure-report"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
     "@types/node": "^24.3.3",
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",
+    "allure-playwright": "^3.4.1",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",

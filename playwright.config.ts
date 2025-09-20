@@ -7,10 +7,9 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : undefined,
   timeout: 30_000,
-  snapshotPathTemplate:
-    "./screenshots/{/projectName}/{testFilePath}/testFileName/{arg}{ext}",
+  snapshotPathTemplate: "./screenshots/{/projectName}/{testFilePath}/testFileName/{arg}{ext}",
 
-  reporter: [["html", { open: "never" }]],
+  reporter: [["html", { open: "never" }], ["allure-playwright"]],
 
   expect: {
     timeout: 5_000,
