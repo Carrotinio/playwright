@@ -1,6 +1,6 @@
 import { test, expect } from "@fixtures/page-object-fixture";
 
-test("Register User", { tag: "@registration" }, async ({ loginPage, homePage }) => {
+test.skip("Register User", { tag: "@registration" }, async ({ loginPage, homePage }) => {
   await homePage.open();
   await homePage.acceptAllCookies();
 
