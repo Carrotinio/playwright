@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "tags": {
+      "type": "string",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["tags"]
+}

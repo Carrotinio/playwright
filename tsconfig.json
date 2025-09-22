@@ -17,6 +17,7 @@
     "paths": {
       "@common/*": ["common/*"],
       "@apiRoutes/*": ["common/apiRoutes/*"],
+      "@assertions/*": ["common/assertions/*"],
       "@base/*": ["common/base/*"],
       "@components/*": ["common/components/*"],
       "@constants/*": ["common/constants/*"],
@@ -25,6 +26,7 @@
       "@locators/*": ["common/locators/*"],
       "@mocks/*": ["common/mocks/*"],
       "@pages/*": ["common/pages/*"],
+      "@requestObjects/*": ["common/request-objects/*"],
       "@schemas/*": ["common/schemas/*"],
       "@setup/*": ["common/setup/*"],
       "@steps/*": ["common/steps/*"],

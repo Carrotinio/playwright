@@ -1,5 +1,6 @@
-import { expect } from "@common/assertions/logger-assertions";
+import { expect } from "@common/assertions/custom-assertions";
 import { test } from "@fixtures/api-fixture";
+import postArticle from "@requestObjects/post-article.json";
 
 // let authToken: string;
 
@@ -7,7 +8,7 @@ import { test } from "@fixtures/api-fixture";
 //   authToken = await createToken("pwtest@test.com", "Welcome2");
 // });
 
-test("GET Articles and Tags", async ({ api }) => {
+test("GET Articles", async ({ api }) => {
   const response = await api
     .path("/articles")
     .params({
@@ -15,28 +16,27 @@ test("GET Articles and Tags", async ({ api }) => {
       offset: 0,
     })
     .getRequest(200);
-  expect(response.articles.length).shouldBeLessThanOrEqual(10);
-  expect(response.articlesCount).shouldEqual(10);
+  await expect(response).shouldMatchSchema("articles", "get-articles");
+
+  // expect(response.articles.length).shouldBeLessThanOrEqual(10);
+  // expect(response.articlesCount).shouldEqual(10);
 
   // const response2 = await api.path("/tags").getRequest(200);
   // expect(response2.tags[0]).shouldBeLessThanOrEqual("Test");
   // expect(response2.tags.length).shouldBeLessThanOrEqual(10);
 });
 
-test("Create and delete article", async ({ api }) => {
-  const createArticleResponse = await api
-    .path("/articles")
-    .body({
-      article: {
-        title: "Test Title TEST",
-        description: "Test description",
-        body: "Test body",
-        tagList: [],
-      },
-    })
-    .postRequest(201);
+test("GET Tags schema validation", async ({ api }) => {
+  const response = await api.path("/tags").getRequest(200);
+  await expect(response).shouldMatchSchema("tags", "get-tags");
+  // await validateSchema("tags", "get-tags", response);
+});
 
-  expect(createArticleResponse.article.title).shouldEqual("Test Title TEST");
+test("Create and delete article", async ({ api }) => {
+  postArticle.article.title = "this is an object title";
+  const createArticleResponse = await api.path("/articles").body(postArticle).postRequest(201);
+
+  expect(createArticleResponse.article.title).shouldEqual("this is an object title");
   const slugId = createArticleResponse.article.slug;
 
   const articlesResponse = await api
@@ -47,7 +47,7 @@ test("Create and delete article", async ({ api }) => {
     })
     .getRequest(200);
 
-  expect(articlesResponse.articles[0].title).shouldEqual("Test Title TEST");
+  expect(articlesResponse.articles[0].title).shouldEqual("this is an object title");
 
   await api.path(`/articles/${slugId}`).deleteRequest(204);
 
@@ -58,7 +58,7 @@ test("Create and delete article", async ({ api }) => {
       offset: 0,
     })
     .getRequest(200);
-  expect(articlesResponseAfterDelete.articles[0].title).not.shouldEqual("Test Title TEST");
+  expect(articlesResponseAfterDelete.articles[0].title).not.shouldEqual("this is an object title");
 });
 
 test("Create, Update and delete article", async ({ api }) => {
